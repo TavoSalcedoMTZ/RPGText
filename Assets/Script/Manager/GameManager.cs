@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Quizz currentQuiz;
     public ButtonsController buttonsController;
+    public TimerManager timerManager;
+    public UIManager uiManager;
 
 
     //Evento
@@ -27,11 +29,30 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void StartRound()
+    {
+        uiManager.timerClock.EntryClock();
+        timerManager.StartTimerManager();
+    }
+    public void RoundComplete()
+    {
+        timerManager.StopTimer();
+        uiManager.timerClock.ExitClock();
+        
+    }
+
     public Quizz GetCurrentQuiz()
     {
         return currentQuiz;
     }
 
+    private void Update()
+    {
+        if (timerManager != null && timerManager.isTimerRunning)
+        {
+            uiManager.timerClock.UpdateClock(timerManager.GetNormalizedTime());
+        }
+    }
 
 
 

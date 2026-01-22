@@ -36,6 +36,7 @@ public class ButtonsController : MonoBehaviour
 
     public void LoadOption(Quizz currentQuiz)
     {
+
         if (currentQuiz == null) { return; }
 
         for (int i = 0; i < buttonObjects.Length; i++)
@@ -52,7 +53,17 @@ public class ButtonsController : MonoBehaviour
             }
         }
 
+    }
 
+
+
+
+    public void PressRandomButton()
+    {
+        if (buttonObjects.Length == 0) { return; }
+        int randomIndex = Random.Range(0, buttonObjects.Length);
+       // Debug.Log("Botones leght" + buttonObjects.Length + " Random index: " + randomIndex);
+        buttonObjects[randomIndex].GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
     }
 
 

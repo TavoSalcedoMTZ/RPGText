@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,64 +6,99 @@ using UnityEngine.Events;
 public class TypewriterTMP : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
-    public float delay = 0.05f;
-    private string fullText;
 
-    private Coroutine typingCoroutine;
+    [Header("Timings")]
+    public float writeDelay = 0.05f;
+    public float eraseDelay = 0.03f;
+    public float waitAfterWrite = 0.8f;
+
+    private Coroutine dialogueCoroutine;
+
+    private Dialogue[] dialogues;
+    private int currentDialogueIndex;
 
     public UnityEvent OnTypingComplete;
 
-
-
     private void OnEnable()
     {
-        StartCoroutine(waitGameManager());
+        StartCoroutine(WaitGameManager());
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnQuizChanged -= SendAndWriteText;
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnQuizChanged -= ReceiveQuiz;
     }
 
-    private IEnumerator waitGameManager()
+    private IEnumerator WaitGameManager()
     {
         while (GameManager.Instance == null)
-        {
             yield return null;
-        }
-        GameManager.Instance.OnQuizChanged += SendAndWriteText;
-    }
-    private void SendAndWriteText(Quizz quiz)
-    {
-        SendAndWriteText(quiz.questionText);
+
+        GameManager.Instance.OnQuizChanged += ReceiveQuiz;
     }
 
-
-
-    public void SendAndWriteText(string text)
+    private void ReceiveQuiz(Quizz quiz)
     {
-        if (typingCoroutine != null)
+        if (quiz == null || quiz.dialogo == null || quiz.dialogo.Length == 0)
+            return;
+
+        dialogues = quiz.dialogo;
+        currentDialogueIndex = 0;
+
+        if (dialogueCoroutine != null)
+            StopCoroutine(dialogueCoroutine);
+
+        dialogueCoroutine = StartCoroutine(DialogueSequence());
+    }
+
+    private IEnumerator DialogueSequence()
+    {
+        while (currentDialogueIndex < dialogues.Length)
         {
-            StopCoroutine(typingCoroutine);
+            Dialogue dialogue = dialogues[currentDialogueIndex];
+
+       
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayDialogue(dialogue.clipAudio);
+
+         
+            yield return StartCoroutine(TypeText(dialogue.DialogueText));
+
+          
+            yield return new WaitForSeconds(waitAfterWrite);
+
+      
+            yield return StartCoroutine(EraseText());
+
+            currentDialogueIndex++;
         }
-        fullText = text;
-        typingCoroutine = StartCoroutine(TypeText());
-    }
 
-
-
-    private IEnumerator TypeText()
-    {
         textComponent.text = "";
-        foreach (char letter in fullText.ToCharArray())
-        {
-            textComponent.text += letter;
-            yield return new WaitForSeconds(delay);
-        }
+        dialogueCoroutine = null;
 
-        typingCoroutine = null;
         OnTypingComplete.Invoke();
     }
 
+    private IEnumerator TypeText(string text)
+    {
+        textComponent.text = "";
 
+        foreach (char letter in text)
+        {
+            textComponent.text += letter;
+            yield return new WaitForSeconds(writeDelay);
+        }
+    }
+
+    private IEnumerator EraseText()
+    {
+        while (textComponent.text.Length > 0)
+        {
+            textComponent.text =
+                textComponent.text.Substring(0, textComponent.text.Length - 1);
+
+            yield return new WaitForSeconds(eraseDelay);
+        }
+    }
 }

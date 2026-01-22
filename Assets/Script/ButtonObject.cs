@@ -30,6 +30,7 @@ public class ButtonObject : MonoBehaviour
         {
             GameManager.Instance.SetQuizz(_option.NextQuiz);
             buttonsController.horizontalMove.ToggleExit();
+            GameManager.Instance.RoundComplete();
         });
 
 
