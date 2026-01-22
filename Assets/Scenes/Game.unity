@@ -1464,6 +1464,7 @@ MonoBehaviour:
   buttonsController: {fileID: 1467431636}
   timerManager: {fileID: 1572204034}
   uiManager: {fileID: 1084870990}
+  managerCurrentRecipe: {fileID: 1050790495}
 --- !u!114 &1572204034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,8 +1588,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 127069350}
   writeDelay: 0.05
-  eraseDelay: 0.009
-  waitAfterWrite: 1
+  eraseDelay: 0.05
+  waitAfterWrite: 1.5
   OnTypingComplete:
     m_PersistentCalls:
       m_Calls:

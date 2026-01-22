@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public ButtonsController buttonsController;
     public TimerManager timerManager;
     public UIManager uiManager;
+    public FoodManager managerCurrentRecipe;
 
 
     //Evento

@@ -22,17 +22,24 @@ public class ButtonObject : MonoBehaviour
         button.onClick.RemoveAllListeners();
     }
 
-    public void SetOption(Option _option)
+    public void SetOption(int _indexOption, Quizz _quizz)
     {
+        Option _option = _quizz.options[_indexOption];
+
         Clear();
         showText.text = _option.optionText;
+
         button.onClick.AddListener(() =>
         {
-            GameManager.Instance.SetQuizz(_option.NextQuiz);
+            Quizz nextQuizz =
+                _quizz.QuizOption
+                ? _quizz.NextQuiz
+                : _option.NextQuiz;
+
+            GameManager.Instance.SetQuizz(nextQuizz);
             buttonsController.horizontalMove.ToggleExit();
             GameManager.Instance.RoundComplete();
+            GameManager.Instance.managerCurrentRecipe.AddNewStats(_option.statsToAdd);
         });
-
-
     }
 }

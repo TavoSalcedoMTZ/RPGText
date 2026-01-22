@@ -43,7 +43,7 @@ public class ButtonsController : MonoBehaviour
         {
             if (i < currentQuiz.options.Length)
             {
-                buttonObjects[i].SetOption(currentQuiz.options[i]);
+                buttonObjects[i].SetOption(i, currentQuiz);
                 buttonObjects[i].gameObject.SetActive(true);
             }
             else

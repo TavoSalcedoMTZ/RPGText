@@ -16,7 +16,8 @@ public class Quizz : ScriptableObject
 
     public Dialogue[] dialogo;
     public Option[] options= new Option[2];
-    public FoodStats statsToAdd;
+    public bool QuizOption;
+    public Quizz NextQuiz;
 
 }
 
@@ -25,4 +26,5 @@ public class Option
 {
     public string optionText;
     public Quizz NextQuiz;
+    public FoodStats statsToAdd;
 }

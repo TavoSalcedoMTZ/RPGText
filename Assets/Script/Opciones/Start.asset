@@ -27,8 +27,22 @@ MonoBehaviour:
     clipAudio: {fileID: 0}
   - DialogueText: "\xA1\xA1Empiecen!!"
     clipAudio: {fileID: 0}
+  - DialogueText: Elige tu base de Salsa
+    clipAudio: {fileID: 0}
   options:
-  - optionText: Pastel Especial
+  - optionText: 
     NextQuiz: {fileID: 11400000}
-  - optionText: Bistec Perfecto
+    statsToAdd:
+      Salado: 1
+      Dulce: 1
+      Picante: 1
+      Horneado: 1
+  - optionText: cha
     NextQuiz: {fileID: 11400000}
+    statsToAdd:
+      Salado: 2
+      Dulce: 2
+      Picante: 2
+      Horneado: 2
+  QuizOption: 0
+  NextQuiz: {fileID: 0}
