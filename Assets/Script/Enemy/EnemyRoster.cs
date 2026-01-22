@@ -4,10 +4,11 @@ using UnityEngine.Events;
 
 public class EnemyRoster : MonoBehaviour
 {
-    public List<EnemyJudge> Judges = new List<EnemyJudge>();
+    public FoodCommentsDatabase commentsDatabase;
 
-    [Header("Events")]
     public UnityEvent<float> OnJudgementFinished;
+
+    public List<EnemyJudge> Judges = new List<EnemyJudge>();
 
     private void Awake()
     {
@@ -18,9 +19,9 @@ public class EnemyRoster : MonoBehaviour
     {
         Judges.Clear();
 
-        Judges.Add(new EnemyJudge("Gordo Ramsi"));
-        Judges.Add(new EnemyJudge("Hasbula"));
-        Judges.Add(new EnemyJudge("Sandro Salinas"));
+        Judges.Add(new EnemyJudge("Gordo Ramsi", commentsDatabase));
+        Judges.Add(new EnemyJudge("Hasbula", commentsDatabase));
+        Judges.Add(new EnemyJudge("Sandro Salinas", commentsDatabase));
     }
 
     public void JudgeFood(FoodStats cookedFood)
@@ -29,10 +30,14 @@ public class EnemyRoster : MonoBehaviour
 
         foreach (var judge in Judges)
         {
-            float score = judge.JudgeFood(cookedFood);
+            List<string> comments;
+            float score = judge.JudgeFood(cookedFood, out comments);
             totalScore += score;
 
-            Debug.Log($"{judge.Name}: {score:0.0} puntos");
+            Debug.Log($"{judge.Name} score: {score:0.0}");
+
+            foreach (var comment in comments)
+                Debug.Log(comment);
         }
 
         OnJudgementFinished?.Invoke(totalScore);

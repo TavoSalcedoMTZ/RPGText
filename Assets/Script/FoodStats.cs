@@ -44,3 +44,8 @@ public enum FoodStatType
     Picante,
     Horneado
 }
+public enum CommentTone
+{
+    Positive,
+    Negative
+}
