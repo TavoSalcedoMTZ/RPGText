@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 50071683}
   - component: {fileID: 50071682}
   m_Layer: 0
-  m_Name: d
+  m_Name: Debug Event Key**
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,6 +314,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127069348}
   m_CullTransparentMesh: 1
+--- !u!1 &267860961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 267860962}
+  - component: {fileID: 267860963}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &267860962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267860961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1572204031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &267860963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267860961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247d6a8772be3e44286c3b3dee79fb45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commentsDatabase: {fileID: 11400000, guid: 8dc2478ca889d5b4aaa82b89cc3015a2, type: 2}
+  OnJudgementFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  Judges: []
 --- !u!1 &400512201
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +914,7 @@ GameObject:
   - component: {fileID: 1050790494}
   - component: {fileID: 1050790495}
   m_Layer: 0
-  m_Name: FoodStats
+  m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,9 +944,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1050790493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c9c293cb17bee43b11b9f69073260a, type: 3}
+  m_Script: {fileID: 11500000, guid: 89b712730bd8e704485390f2f3ea2fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStats:
+    Salado: 0
+    Dulce: 0
+    Picante: 0
+    Horneado: 0
 --- !u!1 &1084870988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1445,7 @@ Transform:
   m_Children:
   - {fileID: 1084870989}
   - {fileID: 1050790494}
+  - {fileID: 267860962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1572204032
