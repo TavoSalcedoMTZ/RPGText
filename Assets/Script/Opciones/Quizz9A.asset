@@ -19,18 +19,19 @@ MonoBehaviour:
     clipAudio: {fileID: 0}
   options:
   - optionText: "Ajustar saz\xF3n"
-    NextQuiz: {fileID: 0}
+    NextQuiz: {fileID: 11400000, guid: d8e96cd3a28893d448e90e9c9648944d, type: 2}
     statsToAdd:
       Salado: 1
       Dulce: 0
       Picante: -1
       Horneado: 0
   - optionText: No Tocar Nada
-    NextQuiz: {fileID: 0}
+    NextQuiz: {fileID: 11400000, guid: d8e96cd3a28893d448e90e9c9648944d, type: 2}
     statsToAdd:
       Salado: 0
       Dulce: 0
       Picante: 0
       Horneado: 0
-  QuizOption: 0
-  NextQuiz: {fileID: 0}
+  QuizOption: 1
+  NextQuiz: {fileID: 11400000, guid: d8e96cd3a28893d448e90e9c9648944d, type: 2}
+  isFinal: 0

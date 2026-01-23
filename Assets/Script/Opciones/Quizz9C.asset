@@ -12,21 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19ce2f7f20967249b3aa68d79f4f96f, type: 3}
   m_Name: Quizz9C
   m_EditorClassIdentifier: 
-  dialogo: []
+  dialogo:
+  - DialogueText: El platillo se estabiliza.
+    clipAudio: {fileID: 0}
+  - DialogueText: "No es perfecto, pero es s\xF3lido."
+    clipAudio: {fileID: 0}
   options:
-  - optionText: 
+  - optionText: Dar un toque final
+    NextQuiz: {fileID: 0}
+    statsToAdd:
+      Salado: 1
+      Dulce: 0
+      Picante: 0
+      Horneado: 0
+  - optionText: Servir tal cual
     NextQuiz: {fileID: 0}
     statsToAdd:
       Salado: 0
       Dulce: 0
       Picante: 0
       Horneado: 0
-  - optionText: 
-    NextQuiz: {fileID: 0}
-    statsToAdd:
-      Salado: 0
-      Dulce: 0
-      Picante: 0
-      Horneado: 0
-  QuizOption: 0
-  NextQuiz: {fileID: 0}
+  QuizOption: 1
+  NextQuiz: {fileID: 11400000, guid: d8e96cd3a28893d448e90e9c9648944d, type: 2}
+  isFinal: 0

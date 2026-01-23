@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public FoodManager managerCurrentRecipe;
 
+    public UnityEvent OnJudgeTimeStarted;
+
+    public EnemyRoster enemyRoster;
 
     //Evento
     public Action<Quizz> OnQuizChanged;
@@ -52,8 +57,24 @@ public class GameManager : MonoBehaviour
 
     public void JudgeTime()
     {
+        // Detener gameplay
+        timerManager.StopTimer();
+        uiManager.timerClock.ExitClock();
 
+        // Crear sesión si no existe
+        if (JudgementSession.Instance == null)
+            new GameObject("JudgementSession").AddComponent<JudgementSession>();
+
+        // Limpiar y guardar stats finales
+        JudgementSession.Instance.Clear();
+        JudgementSession.Instance.CookedFood = managerCurrentRecipe.currentStats;
+
+        // Ejecutar juicio (solo cálculo)
+        enemyRoster.JudgeFood(managerCurrentRecipe.currentStats);
+
+        OnJudgeTimeStarted.Invoke();
     }
+
 
     public Quizz GetCurrentQuiz()
     {

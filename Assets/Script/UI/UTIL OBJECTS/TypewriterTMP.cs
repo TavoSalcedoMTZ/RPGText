@@ -43,13 +43,22 @@ public class TypewriterTMP : MonoBehaviour
         if (quiz == null || quiz.dialogo == null || quiz.dialogo.Length == 0)
             return;
 
-        dialogues = quiz.dialogo;
-        currentDialogueIndex = 0;
-
         if (dialogueCoroutine != null)
             StopCoroutine(dialogueCoroutine);
 
-        dialogueCoroutine = StartCoroutine(DialogueSequence());
+        dialogueCoroutine = StartCoroutine(StartNewQuiz(quiz));
+    }
+
+    private IEnumerator StartNewQuiz(Quizz quiz)
+    {
+        // Si ya había texto, se borra SOLO porque llega un nuevo quiz
+        if (!string.IsNullOrEmpty(textComponent.text))
+            yield return StartCoroutine(EraseText());
+
+        dialogues = quiz.dialogo;
+        currentDialogueIndex = 0;
+
+        yield return StartCoroutine(DialogueSequence());
     }
 
     private IEnumerator DialogueSequence()
@@ -58,25 +67,23 @@ public class TypewriterTMP : MonoBehaviour
         {
             Dialogue dialogue = dialogues[currentDialogueIndex];
 
-       
             if (AudioManager.Instance != null)
                 AudioManager.Instance.PlayDialogue(dialogue.clipAudio);
 
-         
             yield return StartCoroutine(TypeText(dialogue.DialogueText));
 
-          
-            yield return new WaitForSeconds(waitAfterWrite);
+            bool hasNextDialogue = currentDialogueIndex < dialogues.Length - 1;
 
-      
-            yield return StartCoroutine(EraseText());
+            if (hasNextDialogue)
+            {
+                yield return new WaitForSeconds(waitAfterWrite);
+                yield return StartCoroutine(EraseText());
+            }
 
             currentDialogueIndex++;
         }
 
-        textComponent.text = "";
         dialogueCoroutine = null;
-
         OnTypingComplete.Invoke();
     }
 

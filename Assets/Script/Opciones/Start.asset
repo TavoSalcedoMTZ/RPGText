@@ -25,7 +25,7 @@ MonoBehaviour:
     clipAudio: {fileID: 0}
   - DialogueText: "\xBFEstan Listos?"
     clipAudio: {fileID: 0}
-  - DialogueText: "\u201CTodo chef cocina con una intenci\xF3n.\u201D"
+  - DialogueText: "Todo chef cocina con una intenci\xF3n."
     clipAudio: {fileID: 0}
   options:
   - optionText: "Respetar la tradici\xF3n"
@@ -43,4 +43,5 @@ MonoBehaviour:
       Picante: 2
       Horneado: 0
   QuizOption: 1
-  NextQuiz: {fileID: 11400000, guid: 732ee48bad6b57f40aa0d80790ef35be, type: 2}
+  NextQuiz: {fileID: 11400000, guid: 686cdd81b50722c4495f2d54b06c174f, type: 2}
+  isFinal: 0

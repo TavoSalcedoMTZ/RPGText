@@ -6,7 +6,8 @@ public class EnemyRoster : MonoBehaviour
 {
     public FoodCommentsDatabase commentsDatabase;
 
-    public UnityEvent<float> OnJudgementFinished;
+    public UnityEvent<JudgeResult> OnJudgeEvaluated;
+    public UnityEvent<float, string> OnFinalJudgement;
 
     public List<EnemyJudge> Judges = new List<EnemyJudge>();
 
@@ -26,6 +27,9 @@ public class EnemyRoster : MonoBehaviour
 
     public void JudgeFood(FoodStats cookedFood)
     {
+        var session = JudgementSession.Instance;
+        if (session == null) return;
+
         float totalScore = 0f;
 
         foreach (var judge in Judges)
@@ -34,12 +38,13 @@ public class EnemyRoster : MonoBehaviour
             float score = judge.JudgeFood(cookedFood, out comments);
             totalScore += score;
 
-            Debug.Log($"{judge.Name} score: {score:0.0}");
-
-            foreach (var comment in comments)
-                Debug.Log(comment);
+            session.JudgeResults.Add(
+                new JudgeResult(judge.Name, score, comments)
+            );
         }
 
-        OnJudgementFinished?.Invoke(totalScore);
+        session.TotalScore = totalScore;
+        session.FinalText = JudgementTextResolver.GetFinalText(totalScore);
     }
+
 }

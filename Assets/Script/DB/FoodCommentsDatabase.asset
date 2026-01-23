@@ -12,4 +12,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce33e82599bbbb443b1a0d6f4fc570c4, type: 3}
   m_Name: FoodCommentsDatabase
   m_EditorClassIdentifier: 
-  comments: []
+  comments:
+  - statType: 0
+    tone: 0
+    text: El nivel de sal realza todos los sabores sin opacarlos.
+  - statType: 0
+    tone: 0
+    text: "La saz\xF3n est\xE1 bien medida, se nota experiencia."
+  - statType: 0
+    tone: 0
+    text: Cada bocado mantiene un equilibrio agradable.
+  - statType: 0
+    tone: 0
+    text: "La sal acompa\xF1a, no domina. Buen criterio."
+  - statType: 0
+    tone: 0
+    text: "Se percibe intenci\xF3n en la saz\xF3n, nada est\xE1 fuera de lugar."
+  - statType: 0
+    tone: 1
+    text: La sal es excesiva, cansa al paladar.
+  - statType: 0
+    tone: 1
+    text: El sabor salado opaca el resto del platillo.
+  - statType: 0
+    tone: 1
+    text: "Parece que alguien perdi\xF3 la medida."
+  - statType: 0
+    tone: 1
+    text: "La sal domina donde no deber\xEDa."
+  - statType: 0
+    tone: 1
+    text: "Un error com\xFAn: m\xE1s sal no significa m\xE1s sabor."
+  - statType: 1
+    tone: 0
+    text: El toque dulce suaviza el conjunto de manera elegante.
+  - statType: 1
+    tone: 0
+    text: "La dulzura est\xE1 bien integrada."
+  - statType: 1
+    tone: 0
+    text: Aporta balance sin robar protagonismo.
+  - statType: 1
+    tone: 0
+    text: Un contraste agradable y bien pensado.
+  - statType: 1
+    tone: 0
+    text: "El dulzor acompa\xF1a, no distrae."
+  - statType: 1
+    tone: 1
+    text: El dulzor rompe con la identidad del platillo.
+  - statType: 1
+    tone: 1
+    text: Se siente fuera de lugar.
+  - statType: 1
+    tone: 1
+    text: Demasiado dulce para este tipo de receta.
+  - statType: 1
+    tone: 1
+    text: "El az\xFAcar distrae m\xE1s de lo que aporta"
+  - statType: 1
+    tone: 1
+    text: "Parece un error de juicio m\xE1s que una decisi\xF3n."
+  - statType: 2
+    tone: 0
+    text: El picante despierta el platillo sin agredir.
+  - statType: 2
+    tone: 0
+    text: Buen manejo del fuego, se siente controlado.
+  - statType: 2
+    tone: 0
+    text: "Aporta car\xE1cter y personalidad."
+  - statType: 2
+    tone: 0
+    text: El picante llega al final, como debe ser.
+  - statType: 2
+    tone: 0
+    text: Una intensidad bien calculada.
+  - statType: 2
+    tone: 0
+    text: El picante domina por completo.
+  - statType: 2
+    tone: 1
+    text: El equilibrio se pierde por exceso de picante.
+  - statType: 2
+    tone: 1
+    text: No todo platillo necesita tanto fuego.
+  - statType: 3
+    tone: 0
+    text: "El horneado est\xE1 en su punto."
+  - statType: 3
+    tone: 0
+    text: "El horneado est\xE1 en su punto."
+  - statType: 3
+    tone: 0
+    text: El tiempo en horno fue bien aprovechado.
+  - statType: 3
+    tone: 0
+    text: El tiempo en horno fue bien aprovechado.
+  - statType: 3
+    tone: 0
+    text: El tiempo en horno fue bien aprovechado.

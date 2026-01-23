@@ -30,5 +30,6 @@ MonoBehaviour:
       Dulce: 0
       Picante: 0
       Horneado: 0
-  QuizOption: 0
-  NextQuiz: {fileID: 0}
+  QuizOption: 1
+  NextQuiz: {fileID: 11400000, guid: 3af5cf23c30b5064383e6cbd5dc005ee, type: 2}
+  isFinal: 0

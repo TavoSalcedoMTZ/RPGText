@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19ce2f7f20967249b3aa68d79f4f96f, type: 3}
   m_Name: Quizz10Final
   m_EditorClassIdentifier: 
-  dialogo: []
+  dialogo:
+  - DialogueText: "La lasagna est\xE1 lista."
+    clipAudio: {fileID: 0}
+  - DialogueText: El jurado observa en silencio
+    clipAudio: {fileID: 0}
   options:
   - optionText: 
     NextQuiz: {fileID: 0}
@@ -30,3 +34,4 @@ MonoBehaviour:
       Horneado: 0
   QuizOption: 0
   NextQuiz: {fileID: 0}
+  isFinal: 1
