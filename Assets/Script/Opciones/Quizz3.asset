@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19ce2f7f20967249b3aa68d79f4f96f, type: 3}
+  m_Name: Quizz3
+  m_EditorClassIdentifier: 
+  dialogo:
+  - DialogueText: "La salsa ser\xE1 el coraz\xF3n de la lasagna"
+    clipAudio: {fileID: 0}
+  options:
+  - optionText: Salsa balanceada
+    NextQuiz: {fileID: 0}
+    statsToAdd:
+      Salado: 1
+      Dulce: 0
+      Picante: 1
+      Horneado: 0
+  - optionText: Salsa concentrada
+    NextQuiz: {fileID: 0}
+    statsToAdd:
+      Salado: 2
+      Dulce: -1
+      Picante: 0
+      Horneado: 0
+  QuizOption: 1
+  NextQuiz: {fileID: 11400000, guid: 4a21de4642994ed49a20860f053902a1, type: 2}

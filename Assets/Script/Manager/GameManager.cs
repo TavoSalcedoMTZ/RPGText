@@ -26,8 +26,16 @@ public class GameManager : MonoBehaviour
     public void SetQuizz(Quizz _quiz)
     {
         currentQuiz = _quiz;
-        OnQuizChanged?.Invoke(currentQuiz);
 
+
+        if (_quiz.isFinal)
+        {
+            JudgeTime();
+        }
+        else
+        {
+            OnQuizChanged?.Invoke(currentQuiz);
+        }
     }
 
     public void StartRound()
@@ -40,6 +48,11 @@ public class GameManager : MonoBehaviour
         timerManager.StopTimer();
         uiManager.timerClock.ExitClock();
         
+    }
+
+    public void JudgeTime()
+    {
+
     }
 
     public Quizz GetCurrentQuiz()

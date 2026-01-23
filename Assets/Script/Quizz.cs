@@ -18,6 +18,7 @@ public class Quizz : ScriptableObject
     public Option[] options= new Option[2];
     public bool QuizOption;
     public Quizz NextQuiz;
+    public bool isFinal;
 
 }
 
